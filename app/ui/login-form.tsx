@@ -9,12 +9,33 @@ import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from '@/app/ui/button';
 import { useFormState, useFormStatus } from 'react-dom';
 import { authenticate } from '@/app/lib/actions';
- 
+import { useRouter } from 'next/navigation';
+
 export default function LoginForm() {
+  const router = useRouter();
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+  const { pending } = useFormStatus();
+
+  const handleSubmit = async (event : any) => {
+    event.preventDefault();
+
+    try {
+      // Perform form validation here if needed
+
+      // Call dispatch with the appropriate payload or form data
+      await dispatch(new FormData(event.target));
+
+      // Assuming dispatch handles form submission and triggers authenticate internally
+      if (!pending && !errorMessage) {
+        router.push('/dashboard'); // Replace with your desired redirect path
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+    }
+  };
  
   return (
-    <form action={dispatch} className="mt-[30%]">
+    <form action={handleSubmit} className="mt-[30%]">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
         <h1 className="mb-3 text-2xl">
           Por favor ingrese para continuar
