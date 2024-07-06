@@ -27,7 +27,7 @@ export default function LoginForm() {
 
       // Assuming dispatch handles form submission and triggers authenticate internally
       if (!pending && !errorMessage) {
-        router.push('/dashboard'); // Redirect upon successful authentication
+        router.push('/panel/anuncios'); // Redirect upon successful authentication
       }
     } catch (error) {
       console.error('Form submission error:', error);
