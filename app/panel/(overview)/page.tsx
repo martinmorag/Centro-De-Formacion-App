@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <main className={`flex h-screen`}>
+    <main className="flex h-screen">
        <div className="flex flex-1 justify-around items-center flex-col bg-white">
         <Image
           src="/Logo.png"
@@ -12,10 +12,10 @@ export default function Page() {
           width={250}
           height={117.20}
           className="h-117"
-        ></Image>
+        />
         <div>
-          <p className='text-lg italic pb-5'>"El aprendizaje es experiencia, todo lo demás es información."</p>
-          <p className='text-lg text-right'>- Albert Einstein</p>
+          <p className="text-lg italic pb-5">&quot;El aprendizaje es experiencia, todo lo demás es información.&quot;</p>
+          <p className="text-lg text-right">- Albert Einstein</p>
         </div>
         <Link
           href="/"
