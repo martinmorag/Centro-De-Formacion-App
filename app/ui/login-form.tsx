@@ -16,18 +16,18 @@ export default function LoginForm() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
   const { pending } = useFormStatus();
 
-  const handleSubmit = async (event : any) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
-      // Perform form validation here if needed
+      const formData = new FormData(event.currentTarget);
 
       // Call dispatch with the appropriate payload or form data
-      await dispatch(new FormData(event.target));
+      await dispatch(formData);
 
       // Assuming dispatch handles form submission and triggers authenticate internally
       if (!pending && !errorMessage) {
-        router.push('/dashboard'); // Replace with your desired redirect path
+        router.push('/dashboard'); // Redirect upon successful authentication
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -35,7 +35,7 @@ export default function LoginForm() {
   };
  
   return (
-    <form action={handleSubmit} className="mt-[30%]">
+    <form onSubmit={handleSubmit} className="mt-[30%]">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
         <h1 className="mb-3 text-2xl">
           Por favor ingrese para continuar
