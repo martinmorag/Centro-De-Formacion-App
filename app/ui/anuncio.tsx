@@ -18,7 +18,7 @@ export const Anuncios: React.FC<HomePageProps> = ({ anuncios }) => {
                     <img 
                     src={anuncio.imagen} 
                     alt={anuncio.nombre} 
-                    className="max-h-[65vh] object-contain rounded-md"
+                    className="max-h-[90vh] object-contain rounded-md"
                     />
                 </div>
             </section>
